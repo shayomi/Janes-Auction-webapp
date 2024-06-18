@@ -1,24 +1,40 @@
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Button } from "../ui/button";
+import Navitems from "./Navitems";
+import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
     <header className="w-full">
-      <div className="flex items-center justify-evenly px-12 h-[70px] text-white">
-        <Link href="" className="w-36 ">
+      <div className="wrapper flex items-center justify-between p-12">
+        <Link href="/" className="w-36">
           <Image
             src="/assets/logos/janes4.svg"
             width={128}
-            height={39}
-            alt="Janes"
+            height={38}
+            alt="drievent-logo"
           />
         </Link>
-        <div className="flex flex-row gap-x-6">
-          <Link href="">Auction</Link>
-          <Link href="">Collections</Link>
+
+        <SignedIn>
+          <nav className="md:flex md:flex-around hidden w-full max-w-xs">
+            <Navitems />
+          </nav>
+        </SignedIn>
+        <div className="flex w-32 justify-end gap-3">
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+            <MobileNav />
+          </SignedIn>
+          <SignedOut>
+            <Button asChild className="rounded-full" size="lg">
+              <Link href="/sign-in">Login</Link>
+            </Button>
+          </SignedOut>
         </div>
-        <div className="flex w-32">clerk here</div>
       </div>
     </header>
   );
