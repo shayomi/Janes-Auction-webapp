@@ -7,7 +7,7 @@ import { Separator } from "../ui/separator";
 const Footer = () => {
   return (
     <footer className="w-full block ">
-      <div className="flex flex-row flex-1 justify-between p-12 items-center border-b border-1 border-white">
+      <div className="flex  flex-row flex-1 justify-between p-12 items-center border-b border-1 border-white">
         <div>
           <Link href="/" className="w-36">
             <Image
@@ -17,11 +17,8 @@ const Footer = () => {
               alt="janes-logo"
             />
           </Link>
-          {/* <p className="max-w-[250px] w-[220px] text-white">
-            Janes is an auction platform to buy exclusive collectibles
-          </p> */}
         </div>
-        <div className="flex-row flex justify-evenly gap-8 text-white font-medium">
+        <div className="flex-row hidden md:flex justify-evenly gap-8 text-white font-medium">
           <Link href="/">Janes Auctions</Link>
           <Link href="/">Janes Collectibles</Link>
           <Link href="/">Settings</Link>
