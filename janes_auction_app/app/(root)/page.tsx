@@ -95,8 +95,8 @@ export default function Home() {
             cartoon with Xs for eyes, Chum, a version of Companion that is
             reminiscent of the Michelin Man, and Accomplice, another seeming
             relative of Companion, but with a pair of rabbit ears. JANES are
-            produced in vinyl, wood, and mixed media. JANES&apos; sculptures
-            have been produced in editions of 10, 25, and 100.
+            produced in vinyl, wood, and mixed media. JANES&apos; sculpture have
+            been produced in editions of 10, 25, and 100.
           </p>
           <div className="grid grid-cols-2  gap-8 w-[100%] md:w-[55%] items-start md:items-end">
             <Image
