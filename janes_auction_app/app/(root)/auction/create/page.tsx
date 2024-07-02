@@ -1,7 +1,7 @@
 import React from "react";
 
 const CreateAuction = () => {
-  return <div>CreateAuction</div>;
+  return <div>CreateAuctions</div>;
 };
 
 export default CreateAuction;
