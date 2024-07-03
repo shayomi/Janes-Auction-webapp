@@ -16,3 +16,14 @@ export const headerLinks = [
     route: "/profile",
   },
 ];
+
+export const eventDefaultValues = {
+  title: "",
+  description: "",
+  location: "",
+  imageUrl: "",
+  auctionStartDate: new Date(),
+  auctionEndDate: new Date(),
+  categoryId: "",
+  price: "",
+};
