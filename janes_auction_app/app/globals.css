@@ -201,7 +201,7 @@
   }
 
   .button {
-    @apply rounded-full h-[54px] p-regular-16;
+    @apply rounded-md bg-blue-500 h-[54px] p-medium-16;
   }
 
   .select-item {
@@ -234,4 +234,25 @@
 .cl-formButtonPrimary:focus,
 .cl-formButtonPrimary:active {
   background-color: #705cf7;
+}
+
+.datePicker {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  background-color: transparent;
+  width: 100%;
+  outline: none;
+  margin-left: 16px;
+}
+
+.react-datepicker__day--selected {
+  background-color: #624cf5 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #624cf5 !important;
 }
