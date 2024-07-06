@@ -15,10 +15,10 @@ export type UpdateUserParams = {
   photo: string;
 };
 
-// ====== EVENT PARAMS
-export type CreateCollectionParams = {
+// ====== Auction PARAMS
+export type CreateAuctionParams = {
   userId: string;
-  event: {
+  auction: {
     title: string;
     description: string;
     imageUrl: string;
@@ -30,9 +30,9 @@ export type CreateCollectionParams = {
   path: string;
 };
 
-export type UpdateCollectionParams = {
+export type UpdateAuctionParams = {
   userId: string;
-  event: {
+  auction: {
     _id: string;
     title: string;
     imageUrl: string;
@@ -45,32 +45,32 @@ export type UpdateCollectionParams = {
   path: string;
 };
 
-export type DeleteCollectionParams = {
-  collectionId: string;
+export type DeleteAuctionParams = {
+  auctionId: string;
   path: string;
 };
 
-export type GetAllCollectionParams = {
+export type GetAllAuctionParams = {
   query: string;
   category: string;
   limit: number;
   page: number;
 };
 
-export type GetCollectionByUserParams = {
+export type GetAuctionByUserParams = {
   userId: string;
   limit?: number;
   page: number;
 };
 
-export type GetRelatedCollectionByCategoryParams = {
+export type GetRelatedAuctionByCategoryParams = {
   categoryId: string;
-  collectionId: string;
+  auctionId: string;
   limit?: number;
   page: number | string;
 };
 
-export type Collection = {
+export type Auction = {
   _id: string;
   title: string;
   description: string;
@@ -99,8 +99,8 @@ export type CreateCategoryParams = {
 
 // ====== ORDER PARAMS
 export type CheckoutOrderParams = {
-  eventTitle: string;
-  eventId: string;
+  auctionTitle: string;
+  auctionId: string;
   price: string;
   isFree: boolean;
   buyerId: string;
@@ -108,19 +108,19 @@ export type CheckoutOrderParams = {
 
 export type CreateOrderParams = {
   stripeId: string;
-  eventId: string;
+  auctionId: string;
   buyerId: string;
   totalAmount: string;
   createdAt: Date;
 };
 
-export type GetOrdersByEventParams = {
-  eventId: string;
+export type GetOrdersByAuctionParams = {
+  auctionId: string;
   searchString: string;
 };
 
 export type GetOrdersByUserParams = {
-  userId: string | null;
+  auctionId: string | null;
   limit?: number;
   page: string | number | null;
 };

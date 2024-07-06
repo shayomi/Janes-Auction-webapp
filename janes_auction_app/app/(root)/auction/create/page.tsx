@@ -1,4 +1,4 @@
-import EventForm from "@/components/shared/EventForm";
+import AuctionForm from "@/components/shared/AuctionForm";
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
 
@@ -16,7 +16,7 @@ const CreateAuction = () => {
       </section>
 
       <div className="my-8 px-12">
-        <EventForm userId={userId} type="Create" />
+        <AuctionForm userId={userId} type="Create" />
       </div>
     </main>
   );

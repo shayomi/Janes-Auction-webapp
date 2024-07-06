@@ -1,6 +1,6 @@
 import mongoose, { Document, model, models, Schema } from "mongoose";
 
-export interface ICollection extends Document {
+export interface IAuction extends Document {
   title: string;
   description?: string;
   uploadedAt?: Date;
@@ -12,7 +12,7 @@ export interface ICollection extends Document {
   owner?: { _id: string; firstName: string; lastName: string };
 }
 
-const CollectionSchema = new Schema({
+const AuctionSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   uploadedAt: { type: Date, default: Date.now },
@@ -24,7 +24,7 @@ const CollectionSchema = new Schema({
   owner: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-const Collection =
-  mongoose.models.Collection || mongoose.model("Collection", CollectionSchema);
+const Auction =
+  mongoose.models.Auction || mongoose.model("Auction", AuctionSchema);
 
-export default Collection;
+export default Auction;
