@@ -26,14 +26,33 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useUploadThing } from "@/lib/uplaodthing";
 import { useRouter } from "next/navigation";
 import { createAuction } from "@/lib/actions/auction.action";
+import { IAuction } from "@/lib/database/models/auction.model";
 
 type AuctionFormProps = {
   userId: string;
   type: "Create" | "Update";
+  auction?: IAuction;
+  auctionId?: string;
 };
 
-const AuctionForm = ({ userId, type }: AuctionFormProps) => {
-  const initialValues = auctionDefaultValues;
+const AuctionForm = ({
+  userId,
+  type,
+  auction,
+  auctionId,
+}: AuctionFormProps) => {
+  const initialValues =
+    auction && type === "Update"
+      ? {
+          ...auction,
+          auctionStartDate: auction.auctionStartDate
+            ? new Date(auction.auctionStartDate)
+            : new Date(),
+          auctionEndDate: auction.auctionEndDate
+            ? new Date(auction.auctionEndDate)
+            : new Date(),
+        }
+      : auctionDefaultValues;
   const [files, setFiles] = useState<File[]>([]);
   const router = useRouter();
 

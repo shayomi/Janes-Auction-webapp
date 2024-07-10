@@ -1,24 +1,36 @@
-import EventForm from "@/components/shared/EventForm";
+import AuctionForm from "@/components/shared/AuctionForm";
+import { getAuctionById } from "@/lib/actions/auction.action";
 import { auth } from "@clerk/nextjs/server";
-import React from "react";
 
-const UpdateAuction = () => {
+type UpdateAuctionProps = {
+  params: {
+    id: string;
+  };
+};
+
+const UpdateAuction = async ({ params: { id } }: UpdateAuctionProps) => {
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;
+  const auction = await getAuctionById(id);
 
   return (
-    <main className="max-w-[1440px] w-full ">
-      <section>
-        <h3 className="h3-bold text-center sm:text-left text-white  p-12">
-          Update Auction
+    <>
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+        <h3 className="wrapper h3-bold text-center sm:text-left">
+          Update Event
         </h3>
       </section>
 
-      <div className="my-8">
-        <EventForm userId={userId} type="Update" />
+      <div className="wrapper my-8">
+        <AuctionForm
+          type="Update"
+          auction={auction}
+          auctionId={auction._id}
+          userId={userId}
+        />
       </div>
-    </main>
+    </>
   );
 };
 

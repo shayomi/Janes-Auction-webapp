@@ -6,7 +6,7 @@ import { Separator } from "../ui/separator";
 
 const Footer = () => {
   return (
-    <footer className="w-full block ">
+    <footer className="w-full block mt-24 ">
       <div className="flex  flex-row flex-1 justify-between p-12 items-center border-b border-1 border-white">
         <div>
           <Link href="/" className="w-36">
