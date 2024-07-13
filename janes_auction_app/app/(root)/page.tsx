@@ -1,6 +1,22 @@
+import Collection from "@/components/shared/Collection";
 import Image from "next/image";
+import Search from "@/components/shared/Search";
+import { getAllAuction } from "@/lib/actions/auction.action";
+import { SearchParamProps } from "@/types";
+import Link from "next/link";
 
-export default function Home() {
+export default async function Home({ searchParams }: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const searchText = (searchParams?.query as string) || "";
+  const category = (searchParams?.category as string) || "";
+
+  const auctions = await getAllAuction({
+    query: searchText,
+    category,
+    page,
+    limit: 8,
+  });
+
   return (
     <main className="max-w-[1440px] w-full block">
       {/* hero section */}
@@ -39,41 +55,15 @@ export default function Home() {
             people who appreciate arts.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 p-6 gap-8 md:p-12 mt-12 mx-auto">
-          <Image
-            src="/assets/janesartone.png"
-            width={300}
-            height={500}
-            alt="janesart"
-            className=""
-          />
-          <Image
-            src="/assets/janestwo.png"
-            width={300}
-            height={500}
-            alt="janesart"
-            className=""
-          />
-          <Image
-            src="/assets/janesthree.png"
-            width={300}
-            height={500}
-            alt="janesart"
-            className=""
-          />
-          <Image
-            src="/assets/janesfour.png"
-            width={300}
-            height={500}
-            alt="janesart"
-            className=""
-          />
-          <Image
-            src="/assets/janesfive.png"
-            width={300}
-            height={500}
-            alt="janesart"
-            className=""
+        <div className="mt-12">
+          <Collection
+            data={auctions?.data}
+            emptyTitle="No collections at the moment"
+            emptyStateSubtext="Come back later"
+            collectionType="All_Auctions"
+            limit={8}
+            page={1}
+            totalPages={2}
           />
         </div>
       </section>
@@ -107,13 +97,15 @@ export default function Home() {
               className="px-6 py-4 border-[1px] border-slate-300 rounded-md "
             />
             <div className="flex flex-col gap-4 justify-center">
-              <Image
-                src="/icons/nexticon.png"
-                alt="menu"
-                width={60}
-                height={60}
-                className="cursor-pointer order-last md:order-none"
-              />
+              <Link href="/collections">
+                <Image
+                  src="/icons/nexticon.png"
+                  alt="menu"
+                  width={60}
+                  height={60}
+                  className="cursor-pointer order-last md:order-none"
+                />
+              </Link>
               <Image
                 src="/assets/janesfour.png"
                 width={250}

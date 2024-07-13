@@ -14,7 +14,7 @@ export default async function Collections({ searchParams }: SearchParamProps) {
     query: searchText,
     category,
     page,
-    limit: 6,
+    limit: 24,
   });
 
   return (

@@ -25,7 +25,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useUploadThing } from "@/lib/uplaodthing";
 import { useRouter } from "next/navigation";
-import { createAuction } from "@/lib/actions/auction.action";
+import { createAuction, updateAuction } from "@/lib/actions/auction.action";
 import { IAuction } from "@/lib/database/models/auction.model";
 
 type AuctionFormProps = {
@@ -87,6 +87,27 @@ const AuctionForm = ({
         if (newAuction) {
           form.reset();
           router.push(`/auction/${newAuction._id}`);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    if (type === "Update") {
+      if (!auctionId) {
+        router.back();
+        return;
+      }
+
+      try {
+        const updatedAuction = await updateAuction({
+          userId,
+          auction: { ...values, imageUrl: uploadedImageUrl, _id: auctionId },
+          path: `/auction/${auctionId}`,
+        });
+        if (updatedAuction) {
+          form.reset();
+          router.push(`/auction/${updatedAuction._id}`);
         }
       } catch (error) {
         console.log(error);

@@ -1,4 +1,8 @@
-import { getAuctionById } from "@/lib/actions/auction.action";
+import Collection from "@/components/shared/Collection";
+import {
+  getAuctionById,
+  getRelatedAuctionByCategory,
+} from "@/lib/actions/auction.action";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
@@ -8,6 +12,12 @@ const AuctionDetails = async ({
   searchParams,
 }: SearchParamProps) => {
   const auction = await getAuctionById(id);
+
+  const relatedAuction = await getRelatedAuctionByCategory({
+    categoryId: auction.category._id,
+    auctionId: auction._id,
+    page: searchParams.page as string,
+  });
 
   return (
     <>
@@ -80,6 +90,20 @@ const AuctionDetails = async ({
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+        <h3 className="h3-bold mt-12 text-white">Related Auctions</h3>
+
+        <Collection
+          data={relatedAuction?.data}
+          emptyTitle="No collections at the moment"
+          emptyStateSubtext="Come back later"
+          collectionType="All_Auctions"
+          limit={5}
+          page={1}
+          totalPages={2}
+        />
       </section>
     </>
   );

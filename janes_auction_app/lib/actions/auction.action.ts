@@ -72,7 +72,7 @@ export async function getAuctionById(auctionId: string) {
 }
 
 // UPDATE
-export async function updateEvent({
+export async function updateAuction({
   userId,
   auction,
   path,

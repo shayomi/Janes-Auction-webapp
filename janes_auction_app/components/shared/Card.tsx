@@ -21,10 +21,10 @@ const Card = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
     : false;
 
   return (
-    <div className="group relative flex w-full max-w-[300px] flex-col overflow-hidden rounded-xl border-[1px] border-blue-500 shadow-md transition-all hover:shadow-lg ">
+    <div className="group relative flex w-full max-w-[300px] flex-col overflow-hidden rounded-xl border-[1px] border-blue-500 shadow-md transition-all hover:shadow-lg hover:transform hover:scale-110 duration-500">
       <div className="p-4 flex flex-col gap-y-4 items-center justify-center">
         <Link
-          href={`/events/${auction._id}`}
+          href={`/auction/${auction._id}`}
           // style={{ backgroundImage: `url(${auction.imageUrl})` }}
           className=""
         >
@@ -37,7 +37,7 @@ const Card = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
           />
         </Link>
 
-        <Link href={`/events/${auction._id}`}>
+        <Link href={`/auction/${auction._id}`}>
           <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-white">
             {auction.title}
           </p>
