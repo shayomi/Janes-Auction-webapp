@@ -1,6 +1,6 @@
 import { IAuction } from "@/lib/database/models/auction.model";
 import React from "react";
-import Card from "./Card";
+import OwnerCard from "./OwnerCard";
 
 type CollectionProps = {
   data: IAuction[];
@@ -13,7 +13,7 @@ type CollectionProps = {
   collectionType?: "Auction_Created" | "My_Auctions" | "All_Auctions";
 };
 
-const Collection = ({
+const OwnerCollection = ({
   data,
   emptyTitle,
   emptyStateSubtext,
@@ -25,22 +25,14 @@ const Collection = ({
   return (
     <>
       {data.length > 0 ? (
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex flex-col items-start">
           <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-10">
             {data.map((auction) => {
               const hasOrderLink = collectionType === "Auction_Created";
-              const hidePrice = collectionType === "My_Auctions";
 
               return (
-                <li
-                  key={auction._id as React.Key}
-                  className="flex justify-center"
-                >
-                  <Card
-                    auction={auction}
-                    hasOrderLink={hasOrderLink}
-                    hidePrice={hidePrice}
-                  />
+                <li key={auction._id as React.Key} className="flex ">
+                  <OwnerCard auction={auction} hasOrderLink={hasOrderLink} />
                 </li>
               );
             })}
@@ -64,4 +56,4 @@ const Collection = ({
   );
 };
 
-export default Collection;
+export default OwnerCollection;

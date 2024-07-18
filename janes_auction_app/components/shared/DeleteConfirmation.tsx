@@ -25,12 +25,7 @@ export const DeleteConfirmation = ({ auctionId }: { auctionId: string }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <Image
-          src="/assets/icons/delete.svg"
-          alt="edit"
-          width={20}
-          height={20}
-        />
+        <Image src="/icons/delete.svg" alt="edit" width={20} height={20} />
       </AlertDialogTrigger>
 
       <AlertDialogContent className="bg-white">
