@@ -102,7 +102,6 @@ export type CheckoutOrderParams = {
   auctionTitle: string;
   auctionId: string;
   price: string;
-  isFree: boolean;
   buyerId: string;
 };
 
@@ -120,7 +119,7 @@ export type GetOrdersByAuctionParams = {
 };
 
 export type GetOrdersByUserParams = {
-  auctionId: string | null;
+  userId: string | null;
   limit?: number;
   page: string | number | null;
 };

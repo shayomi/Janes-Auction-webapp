@@ -10,7 +10,7 @@ type CollectionProps = {
   page: number | string;
   totalPages?: number;
   urlParamName?: string;
-  collectionType?: "Auction_Created" | "My_Auctions" | "All_Auctions";
+  collectionType?: "Auction_Created" | "My_Tickets" | "All_Auctions";
 };
 
 const OwnerCollection = ({
@@ -29,10 +29,15 @@ const OwnerCollection = ({
           <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-10">
             {data.map((auction) => {
               const hasOrderLink = collectionType === "Auction_Created";
+              const hidePrice = collectionType === "My_Tickets";
 
               return (
                 <li key={auction._id as React.Key} className="flex ">
-                  <OwnerCard auction={auction} hasOrderLink={hasOrderLink} />
+                  <OwnerCard
+                    auction={auction}
+                    hasOrderLink={hasOrderLink}
+                    hidePrice={hidePrice}
+                  />
                 </li>
               );
             })}

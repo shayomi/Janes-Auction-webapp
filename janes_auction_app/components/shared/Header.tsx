@@ -8,8 +8,8 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
-    <header className="w-full">
-      <div className="wrapper flex items-center justify-between p-12">
+    <header className="w-full ">
+      <div className="wrapper flex items-center justify-between p-12  border-b-[1px] border-blue-500 ">
         <Link href="/" className="w-36">
           <Image
             src="/assets/logos/janes4.svg"

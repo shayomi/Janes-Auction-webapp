@@ -7,7 +7,7 @@ export interface IAuction extends Document {
   imageUrl: string;
   auctionStartDate?: Date;
   auctionEndDate?: Date;
-  price?: string;
+  price: string;
   category: { _id: string; name: string };
   owner?: { _id: string; firstName: string; lastName: string };
 }

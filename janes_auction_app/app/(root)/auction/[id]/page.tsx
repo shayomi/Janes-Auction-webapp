@@ -1,3 +1,4 @@
+import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
 import {
   getAuctionById,
@@ -59,7 +60,7 @@ const AuctionDetails = async ({
               </p>
             </div>
 
-            {/* Check out button */}
+            <CheckoutButton auction={auction} />
 
             <div className="flex flex-col gap-5">
               <div className="flex gap-2 md:gap-3">

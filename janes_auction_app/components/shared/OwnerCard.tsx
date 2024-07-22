@@ -9,9 +9,10 @@ import { DeleteConfirmation } from "./DeleteConfirmation";
 type CardProps = {
   auction: IAuction;
   hasOrderLink?: boolean;
+  hidePrice?: boolean;
 };
 
-const OwnerCard = ({ auction, hasOrderLink }: CardProps) => {
+const OwnerCard = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
@@ -21,7 +22,7 @@ const OwnerCard = ({ auction, hasOrderLink }: CardProps) => {
 
   return (
     <>
-      {isAuctionCreator && (
+      {isAuctionCreator && !hidePrice && (
         <div className=" relative flex w-full max-w-[300px] flex-col overflow-hidden rounded-xl border-[1px] border-blue-500 shadow-md transition-all hover:shadow-lg  hover:scale-105 duration-500">
           <div className="p-4 flex flex-col gap-y-4 items-center justify-center">
             <Link
@@ -45,7 +46,7 @@ const OwnerCard = ({ auction, hasOrderLink }: CardProps) => {
             </Link>
 
             <div className="absolute right-2 top-3 flex flex-col gap-4 rounded-xl bg-blue-200 p-3 shadow-sm transition-all">
-              <Link href={`/events/${auction._id}/update`}>
+              <Link href={`/auction/${auction._id}/update`}>
                 <Image
                   src="/icons/edit.svg"
                   alt="edit"
@@ -76,7 +77,7 @@ const OwnerCard = ({ auction, hasOrderLink }: CardProps) => {
 
           {hasOrderLink && (
             <Link
-              href={`/orders?eventId=${auction._id}`}
+              href={`/orders?auctionId=${auction._id}`}
               className="flex gap-2"
             >
               <p className="text-primary-500">Order Details</p>
