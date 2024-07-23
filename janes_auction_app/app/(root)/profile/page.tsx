@@ -7,7 +7,6 @@ import React from "react";
 import { auth } from "@clerk/nextjs/server";
 import { IAuction } from "@/lib/database/models/auction.model";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export default async function Profile({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;

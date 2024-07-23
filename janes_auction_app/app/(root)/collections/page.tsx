@@ -34,8 +34,8 @@ export default async function Collections({ searchParams }: SearchParamProps) {
         emptyStateSubtext="Come back later"
         collectionType="All_Auctions"
         limit={24}
-        page={1}
-        totalPages={2}
+        page={page}
+        totalPages={auctions?.totalPages}
       />
     </section>
   );

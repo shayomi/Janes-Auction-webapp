@@ -32,7 +32,7 @@ const OwnerCollection = ({
               const hidePrice = collectionType === "My_Tickets";
 
               return (
-                <li key={auction._id as React.Key} className="flex ">
+                <li key={auction._id} className="flex ">
                   <OwnerCard
                     auction={auction}
                     hasOrderLink={hasOrderLink}

@@ -36,7 +36,7 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
       ],
 
       metadata: {
-        eventId: order.auctionId,
+        auctionId: order.auctionId,
         buyerId: order.buyerId,
       },
 
@@ -57,7 +57,7 @@ export const createOrder = async (order: CreateOrderParams) => {
 
     const newOrder = await Order.create({
       ...order,
-      event: order.auctionId,
+      auction: order.auctionId,
       buyer: order.buyerId,
     });
 
@@ -92,22 +92,22 @@ export async function getOrdersByAuction({
       },
       {
         $lookup: {
-          from: "events",
-          localField: "event",
+          from: "auctions",
+          localField: "auction",
           foreignField: "_id",
-          as: "event",
+          as: "auction",
         },
       },
       {
-        $unwind: "$event",
+        $unwind: "$auction",
       },
       {
         $project: {
           _id: 1,
           totalAmount: 1,
           createdAt: 1,
-          auctionTitle: "$event.title",
-          auctionId: "$event._id",
+          auctionTitle: "$auction.title",
+          auctionId: "$auction._id",
           buyer: {
             $concat: ["$buyer.firstName", " ", "$buyer.lastName"],
           },
@@ -141,16 +141,16 @@ export async function getOrdersByUser({
     const skipAmount = (Number(page) - 1) * limit;
     const conditions = { buyer: userId };
 
-    const orders = await Order.distinct("event._id")
+    const orders = await Order.distinct("auction._id")
       .find(conditions)
       .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit)
       .populate({
-        path: "event",
+        path: "auction",
         model: Auction,
         populate: {
-          path: "creator",
+          path: "owner",
           model: User,
           select: "_id firstName lastName",
         },

@@ -1,6 +1,7 @@
 import mongoose, { Document, model, models, Schema } from "mongoose";
 
 export interface IAuction extends Document {
+  _id: string;
   title: string;
   description?: string;
   uploadedAt?: Date;
@@ -9,7 +10,7 @@ export interface IAuction extends Document {
   auctionEndDate?: Date;
   price: string;
   category: { _id: string; name: string };
-  owner?: { _id: string; firstName: string; lastName: string };
+  owner: { _id: string; firstName: string; lastName: string };
 }
 
 const AuctionSchema = new Schema({
