@@ -31,7 +31,7 @@ const Checkout = ({
   const onCheckout = async () => {
     const order = {
       auctionTitle: auction.title,
-      auctionId: auction._id as string,
+      auctionId: auction._id,
       price: auction.price,
       buyerId: userId,
     };
