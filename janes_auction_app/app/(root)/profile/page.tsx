@@ -30,7 +30,7 @@ export default async function Profile({ searchParams }: SearchParamProps) {
 
   return (
     <section className="max-w-[1440px] w-full flex flex-col md:px-12 md:py-0 p-12 mt-12">
-      <div className=" flex items-center justify-center sm:justify-left">
+      {/* <div className=" flex items-start gap-x-12 justify-center ">
         <Link
           href="/profile"
           className="h4-bold text-center sm:text-left text-white"
@@ -49,9 +49,9 @@ export default async function Profile({ searchParams }: SearchParamProps) {
         >
           Bought
         </Link>
-      </div>
+      </div> */}
 
-      <h3 className="h3-bold text-white my-12 px-2">
+      <h3 className="text-md sm:text-lg font-medium text-white my-12 px-2">
         Here are your created Auctions
       </h3>
 

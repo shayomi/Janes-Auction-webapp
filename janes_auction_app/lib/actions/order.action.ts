@@ -67,7 +67,7 @@ export const createOrder = async (order: CreateOrderParams) => {
   }
 };
 
-// GET ORDERS BY EVENT
+// GET ORDERS BY AUCTION
 export async function getOrdersByAuction({
   searchString,
   auctionId,

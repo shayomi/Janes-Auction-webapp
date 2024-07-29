@@ -28,7 +28,8 @@ const Checkout = ({
     }
   }, []);
 
-  const onCheckout = async () => {
+  const onCheckout = async (event: React.FormEvent) => {
+    event.preventDefault(); // Prevent the default form submission
     const order = {
       auctionTitle: auction.title,
       auctionId: auction._id,
@@ -40,7 +41,7 @@ const Checkout = ({
   };
 
   return (
-    <form action={onCheckout} method="post">
+    <form onSubmit={onCheckout}>
       <Button type="submit" role="link" size="lg" className="button sm:w-fit">
         Buy Ticket
       </Button>

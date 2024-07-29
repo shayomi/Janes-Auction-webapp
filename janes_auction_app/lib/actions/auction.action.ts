@@ -56,16 +56,16 @@ export async function createAuction({
   }
 }
 
-// GET ONE EVENT BY ID
+// GET ONE AUCTION BY ID
 export async function getAuctionById(auctionId: string) {
   try {
     await connectToDatabase();
 
-    const event = await populateAuction(Auction.findById(auctionId));
+    const auction = await populateAuction(Auction.findById(auctionId));
 
-    if (!event) throw new Error("Event not found");
+    if (!auction) throw new Error("Auction not found");
 
-    return JSON.parse(JSON.stringify(event));
+    return JSON.parse(JSON.stringify(auction));
   } catch (error) {
     handleError(error);
   }
@@ -85,7 +85,7 @@ export async function updateAuction({
       !auctionToUpdate ||
       auctionToUpdate.organizer.toHexString() !== userId
     ) {
-      throw new Error("Unauthorized or event not found");
+      throw new Error("Unauthorized or auctions not found");
     }
 
     const updatedAuction = await Auction.findByIdAndUpdate(
@@ -113,7 +113,7 @@ export async function deleteAuction({ auctionId, path }: DeleteAuctionParams) {
   }
 }
 
-// GET ALL EVENTS
+// GET ALL AUCTIONS
 export async function getAllAuction({
   query,
   limit = 6,
@@ -154,7 +154,7 @@ export async function getAllAuction({
   }
 }
 
-// GET EVENTS BY ORGANIZER
+// GET AUCTION BY ORGANIZER
 export async function getAuctionByUser({
   userId,
   limit = 6,
@@ -183,7 +183,7 @@ export async function getAuctionByUser({
   }
 }
 
-// GET RELATED EVENTS: EVENTS WITH SAME CATEGORY
+// GET RELATED AUCTION: AUCTIONS WITH SAME CATEGORY
 export async function getRelatedAuctionByCategory({
   categoryId,
   auctionId,

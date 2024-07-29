@@ -19,11 +19,11 @@ export default async function Collections({ searchParams }: SearchParamProps) {
 
   return (
     <section className="max-w-[1440px] w-full block md:p-12 p-12 mt-12">
-      <h3 className="h3-bold text-white">
+      <h3 className="text-xl font-medium text-white">
         Here are some of our exciting collections
       </h3>
 
-      <div className="flex w-full flex-col gap-5 md:flex-row text-white">
+      <div className="flex w-full flex-col gap-5 md:flex-row  mb-12 mt-12">
         <Search />
         <CategoryFilter />
       </div>

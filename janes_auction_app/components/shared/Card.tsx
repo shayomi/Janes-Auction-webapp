@@ -33,12 +33,12 @@ const Card = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
             width={200}
             height={300}
             alt="janesart"
-            className=""
+            className="h-[200px] object-cover rounded-xl"
           />
         </Link>
 
         <Link href={`/auction/${auction._id}`}>
-          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-white">
+          <p className="p-medium-16  line-clamp-2 flex-1 text-white">
             {auction.title}
           </p>
         </Link>

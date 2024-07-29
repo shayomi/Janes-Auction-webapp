@@ -35,12 +35,12 @@ const OwnerCard = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
                 width={200}
                 height={300}
                 alt="janesart"
-                className=""
+                className="h-[200px] object-cover rounded-xl "
               />
             </Link>
 
             <Link href={`/auction/${auction._id}`}>
-              <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-white">
+              <p className="p-medium-16 line-clamp-2 flex-1 text-white">
                 {auction.title}
               </p>
             </Link>
@@ -52,6 +52,7 @@ const OwnerCard = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
                   alt="edit"
                   width={20}
                   height={20}
+                  className=""
                 />
               </Link>
 
@@ -59,17 +60,17 @@ const OwnerCard = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
             </div>
           </div>
 
-          <div className="flex gap-2 px-4 py-2 justify-between text-white">
-            <span className="p-semibold-14 w-min rounded-full bg-blue-800 px-4 py-1 text-green-60">
+          <div className="flex gap-2 px-4 items-center justify-between text-white">
+            <p className="p-semibold-14 w-min rounded-full bg-blue-800 px-4 py-1 text-green-60">
               ${auction.price}
-            </span>
-            <p className="p-semibold-14  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-4">
+            </p>
+            <p className="text-normal text-sm text-white  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-4">
               {auction.category.name}
             </p>
           </div>
 
           {auction.auctionStartDate && (
-            <p className="p-medium-16 p-medium-18 text-grey-500 px-4 py-2 text-white">
+            <p className="text-normal text-sm   text-grey-500 px-4 py-2 text-white">
               {formatDateTime(auction.auctionStartDate).dateOnly} -{" "}
               {formatDateTime(auction.auctionStartDate).timeOnly}
             </p>
@@ -78,7 +79,7 @@ const OwnerCard = ({ auction, hasOrderLink, hidePrice }: CardProps) => {
           {hasOrderLink && (
             <Link
               href={`/orders?auctionId=${auction._id}`}
-              className="flex gap-2"
+              className="flex gap-2 px-4 text-blue-500 italic pb-3"
             >
               <p className="text-primary-500">Order Details</p>
               <Image

@@ -62,9 +62,9 @@ export async function deleteUser(clerkId: string) {
 
     // Unlink relationships
     await Promise.all([
-      // Update the 'events' collection to remove references to the user
+      // Update the 'auctions' collection to remove references to the user
       Auction.updateMany(
-        { _id: { $in: userToDelete.events } },
+        { _id: { $in: userToDelete.auctions } },
         { $pull: { organizer: userToDelete._id } }
       ),
 
