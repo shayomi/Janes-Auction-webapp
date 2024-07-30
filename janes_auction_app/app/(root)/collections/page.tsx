@@ -18,7 +18,7 @@ export default async function Collections({ searchParams }: SearchParamProps) {
   });
 
   return (
-    <section className="max-w-[1440px] w-full block md:p-12 p-12 mt-12">
+    <section className="max-w-[1440px] w-full block md:p-12 p-12 mt-0 md:mt-12">
       <h3 className="text-xl font-medium text-white">
         Here are some of our exciting collections
       </h3>
