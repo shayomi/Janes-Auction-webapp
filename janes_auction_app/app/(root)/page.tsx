@@ -4,6 +4,7 @@ import Search from "@/components/shared/Search";
 import { getAllAuction } from "@/lib/actions/auction.action";
 import { SearchParamProps } from "@/types";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
@@ -63,9 +64,17 @@ export default async function Home({ searchParams }: SearchParamProps) {
             collectionType="All_Auctions"
             limit={8}
             page={1}
-            totalPages={2}
+            totalPages={1}
           />
         </div>
+        <Link href="/collections" className="flex justify-center">
+          <Button
+            size="lg"
+            className="w-28 bg-blue-400 hover:bg-blue-800 text-white"
+          >
+            See More
+          </Button>
+        </Link>
       </section>
 
       {/* collection section */}
