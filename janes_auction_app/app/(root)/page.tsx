@@ -19,7 +19,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
   });
 
   return (
-    <main className="max-w-[1440px] w-full block">
+    <main className="max-w-[1440px] mx-auto w-full block">
       {/* hero section */}
       <section className="flex h-[500px] md:min-h-[600px] flex-col items-center justify-between md:p-24 p-12 mt-24">
         <Image
