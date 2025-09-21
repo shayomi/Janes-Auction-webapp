@@ -8,7 +8,7 @@ const CreateAuction = () => {
   const userId = sessionClaims?.userId as string;
 
   return (
-    <main className="max-w-[1440px] w-full ">
+    <main className="max-w-[1440px] mx-auto w-full ">
       <section>
         <h3 className="h3-bold text-center sm:text-left text-white  p-12">
           Create Auction

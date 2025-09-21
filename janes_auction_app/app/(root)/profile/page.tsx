@@ -29,7 +29,7 @@ export default async function Profile({ searchParams }: SearchParamProps) {
   );
 
   return (
-    <section className="max-w-[1440px] w-full flex flex-col md:px-12 md:py-0 p-12 mt-12">
+    <section className="max-w-[1440px] mx-auto w-full flex flex-col md:px-12 md:py-0 p-12 mt-12">
       {/* <div className=" flex items-start gap-x-12 justify-center ">
         <Link
           href="/profile"
